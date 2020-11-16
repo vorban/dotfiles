@@ -355,10 +355,10 @@ font:
 #   - (macOS) /bin/bash --login
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
-#shell:
-#  program: /bin/bash
-#  args:
-#    - --login
+shell:
+  program: /usr/bin/fish
+  # args:
+    # - --rcfile /home/tinou/.config/bash/.bashrc
 
 # Startup directory
 #

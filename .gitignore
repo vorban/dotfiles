@@ -5,7 +5,9 @@ dconf
 discord
 Electron
 gtk-3.0
+gtk-2.0
 htop
 Slack
 pulse
 qtile/__pycache__
+QtProject.conf

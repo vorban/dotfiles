@@ -100,7 +100,10 @@ layouts = [
     # layout.Bsp(),
     # layout.Columns(),
     # layout.Matrix(),
-    layout.MonadTall(),
+    layout.MonadTall(
+        border_focus="#673AB7",
+        margin=5
+    ),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
@@ -110,7 +113,7 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font='sans',
+    font='Fira Code',
     fontsize=12,
     padding=3,
 )
@@ -118,24 +121,36 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        bottom=bar.Bar(
+        top=bar.Bar(
             [
                 # widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.Prompt(),
-                widget.WindowName(),
+                widget.GroupBox(
+                    font='Fira Code',
+                    disable_drag=True,
+                    highlight_method='block',
+                    this_current_screen_border="#673AB7",
+                    this_screen_border="#311b65",
+                    other_current_screen_border="#673AB7",
+                    other_screen_border="#311b65",
+
+                ),
+                widget.Prompt(font='Fira Code'),
+                # widget.WindowName(font='Fira Code'),
+                widget.Sep(linewidth=50, size_percent=0),
                 widget.Chord(
                     chords_colors={
                         'launch': ("#ff0000", "#ffffff"),
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox("tinou@webup", foreground="#d75f5f"),
+                widget.TextBox("tinou@webup", foreground="#d75f5f", font='Fira Code'),
                 widget.Systray(),
-                widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
-                widget.QuickExit(),
+                widget.Clock(format='%Y-%m-%d %a %I:%M %p', font='Fira Code'),
+                widget.QuickExit(default_text='[ logout ]', font='Fira Code'),
             ],
             24,
+            margin=[5,500,5,500],
+            opacity=0.95
         ),
     ),
 ]
