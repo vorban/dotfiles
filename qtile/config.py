@@ -100,6 +100,10 @@ layouts = [
     # layout.Bsp(),
     # layout.Columns(),
     # layout.Matrix(),
+    layout.MonadWide(
+        border_focus="#673AB7",
+        margin=5
+    ),
     layout.MonadTall(
         border_focus="#673AB7",
         margin=5
@@ -121,9 +125,8 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        top=bar.Bar(
+        bottom=bar.Bar(
             [
-                # widget.CurrentLayout(),
                 widget.GroupBox(
                     font='Fira Code',
                     disable_drag=True,
@@ -136,20 +139,29 @@ screens = [
                 ),
                 widget.Prompt(font='Fira Code'),
                 # widget.WindowName(font='Fira Code'),
-                widget.Sep(linewidth=50, size_percent=0),
+                widget.Spacer(),
                 widget.Chord(
                     chords_colors={
                         'launch': ("#ff0000", "#ffffff"),
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox("tinou@webup", foreground="#d75f5f", font='Fira Code'),
+                # widget.TextBox("tinou@webup", foreground="#d75f5f", font='Fira Code'),
+                widget.CheckUpdates(
+                    colour_have_updates='673AB7',
+                    colour_no_updates='311b65',
+                    display_format='[ Updates: {updates} ]',
+                    custom_command='pacman -Qu',
+                    execute='pacman -Qu',
+                    no_update_string='None',
+                    update_interval=15
+                ),
                 widget.Systray(),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p', font='Fira Code'),
                 widget.QuickExit(default_text='[ logout ]', font='Fira Code'),
             ],
             24,
-            margin=[5,500,5,500],
+            margin=[5,5,5,5],
             opacity=0.95
         ),
     ),
